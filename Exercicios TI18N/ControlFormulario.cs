@@ -35,6 +35,7 @@ namespace Exercicios_TI18N
                                "4. Exercício 04\n" +
                                "5. Exercício 05\n" +
                                "6. Exercício 06\n" +
+                               "7. Exercício 07\n" +
                                "Escolha uma das opções acima: " );
             ConsultarOpcao = Convert.ToInt32(Console.ReadLine());
         }//Mostrar menu
@@ -136,12 +137,155 @@ namespace Exercicios_TI18N
                         Console.WriteLine("O valor da área é: " + exercicio.CalcArea(numA, numB));
 
 
+                    case 5:
+
+                        double totalE;
+                        double valido;
+                        double branco;
+                        double nulo;
+                        do
+                        { 
+                            //Coletando e validando o total de elitores
+                            do
+                            {
+                                Console.WriteLine("Informe o total de eleitores");
+                                totalE= Convert.ToDouble(Console.ReadLine());
+
+                                if (exercicio.ValidarNegativos(totalE) == true)
+                                {
+                                    Console.WriteLine("O número digitado não é válido!!!");
+                                }
+                            } while(exercicio.ValidarNegativos(totalE) == true);
+
+                            //Validando votos validos
+                            do
+                            {
+                                Console.WriteLine("Informe a quantidade de votos válidos");
+                                valido = Convert.ToDouble(Console.ReadLine());
+
+                                if (exercicio.ValidarNegativos(valido) == true)
+                                {
+                                    Console.WriteLine("O número digitado não é válido!!!");
+                                }
+
+                            } while (exercicio.ValidarNegativos(valido) == true);
+
+                            //Validando votos brancos
+                            do
+                            {
+                                Console.WriteLine("Informe a quantidade de votos brancos");
+                                branco = Convert.ToDouble(Console.ReadLine());
+
+                                if (exercicio.ValidarNegativos(branco) == true)
+                                {
+                                    Console.WriteLine("O número digitado não é válido!!!");
+                                }
+
+                            } while (exercicio.ValidarNegativos(branco) == true);
+
+                            //Validando votos nulos
+                            do
+                            {
+                                Console.WriteLine("Infore a quantidade de votos nulos");
+                                nulo = Convert.ToDouble(Console.ReadLine());
+
+                                if (exercicio.ValidarNegativos(nulo) == true) 
+                                {
+                                    Console.WriteLine("O número digitado não é válido!!!");
+                                }
+
+                            } while (exercicio.ValidarNegativos(nulo) == true);
+
+                            Console.Clear();//Limpa a tela
+                            if (exercicio.validarTotalE(totalE, branco, nulo, valido) == true)
+
+                            {
+                                Console.WriteLine("A quantidade de votos é diferente do total de eeitores");
+                            }                            
+                        } while (exercicio.validarTotalE(totalE, branco, nulo, valido) == true);
+
+                            //Mostrar os percentuais em tela
+                            Console.WriteLine("O percentual de votos válidos é: " + exercicio.PValidos(totalE, valido) + "%");
+                            Console.WriteLine("O percentual de votos brancos é: " + exercicio.PBrancos(totalE, branco) + "%");                         
+                            Console.WriteLine("O percentual de votos nulos é: " + exercicio.PNulos(totalE, nulo) + "%");
+                        break;
+                    case 6:
+                        double salario6;
+                        double reajuste6;
+
+                        do
+                        {
+                            Console.WriteLine("Informe o valor do salário do funcionário");
+                            salario6 = Convert.ToDouble(Console.ReadLine());
+
+                            if (exercicio.ValidarNegativos(salario6) == true)
+                            {
+                                Console.WriteLine("O número digitado não é valido");
+                            }
+
+                        } while (exercicio.ValidarNegativos(salario6) == true);
+                        //Fim da validação do salario
+
+                        do
+                        {
+                            Console.WriteLine("Informe o valor do salário do funcionário");
+                            reajuste6 = Convert.ToDouble(Console.ReadLine());
+
+                            if (exercicio.ValidarNegativos(reajuste6) == true)
+                            {
+                                Console.WriteLine("O número digitado não é valido");
+                            }
+
+                        } while (exercicio.ValidarNegativos(reajuste6) == true);
+                        //Mostrando em tela o resultado
+                            Console.Write("O novo salário do funcionário é: " + exercicio.PFuncionario(reajuste6, salario6));
+                        break;
+                    case 7:
+                        double percentualImpostos;
+                        double percentualDistribuidor;
+                        double custoFabrica;
+
+                        do
+                        {
+                            Console.WriteLine("Informe o percentual de impostos");
+                            percentualImpostos = Convert.ToDouble(Console.ReadLine());
+
+                            if (exercicio.ValidarNegativos(percentualImpostos) == true)
+                            {
+                                Console.WriteLine("O valor digitado não é válido");
+                            }//Fim da validação
+                        } while (exercicio.ValidarNegativos(percentualImpostos) == true);
+
+                        do
+                        {
+                            Console.WriteLine("Informe o percentual de distribuidor");
+                            percentualDistribuidor = Convert.ToDouble(Console.ReadLine());
+
+                            if (exercicio.ValidarNegativos(percentualDistribuidor) == true)
+                            {
+                                Console.WriteLine("O valor digitado não é válido");
+                            }//Fim da validação
+                        } while (exercicio.ValidarNegativos(percentualDistribuidor) == true);
+
+
+                        do
+                        {
+                            Console.WriteLine("Informe o custo de fábrica");
+                            custoFabrica = Convert.ToDouble(Console.ReadLine());
+
+                            if (exercicio.ValidarNegativos(custoFabrica) == true)
+                            {
+                                Console.WriteLine("O valor digitado não é válido");
+                            }//Fim da validação
+                        } while (exercicio.ValidarNegativos(custoFabrica) == true);
+                        //Mostrar em tela o custo final
+                        Console.WriteLine("O custo final é R$ " + exercicio.CustoFinalCarro(percentualImpostos, percentualDistribuidor,custoFabrica));
+                        break;
+
 
                     default:
                         Console.WriteLine("Opção escolhida não é válida!");
                         break;
-                   
-
 
 
                 }//Fim do escolha
